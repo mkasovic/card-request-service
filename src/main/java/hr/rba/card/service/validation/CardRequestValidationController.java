@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/card-request-validations")
 @AllArgsConstructor @Slf4j
 public class CardRequestValidationController {
-
     private CardRequestValidationService service;
 
     @PostMapping
