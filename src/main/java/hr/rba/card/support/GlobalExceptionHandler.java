@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(CardRequestNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleCardRequestNotFoundException(HttpServletRequest request, CardRequestNotFoundException ex) {
         return new ResponseEntity<>(new ErrorResponse(getErrorDescription(ex), ErrorResponseCodes.ERR404.toString()), HttpStatus.NOT_FOUND);
