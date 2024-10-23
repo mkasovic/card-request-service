@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/card-requests")
-@Transactional
 @AllArgsConstructor
 public class CardRequestController {
     private final CardRequestService service;
