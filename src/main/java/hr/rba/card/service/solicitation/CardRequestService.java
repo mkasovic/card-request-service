@@ -23,7 +23,6 @@ import java.util.Optional;
 @Service @Transactional
 @Slf4j
 public class CardRequestService {
-
     private final CardRequestRepository repository;
     private final RestClient restClient = RestClient.create();
 
