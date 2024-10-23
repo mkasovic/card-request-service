@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:clients;MODE=PostgreSQL;
+#   url: jdbc:h2:mem:clients;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;MODE=PostgreSQL;
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+#   database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    hibernate.ddl-auto: update #none
+  sql:
+    init.schema-locations: classpath:database/schema.sql
+    init.data-locations: classpath:database/initialize-data.sql
+  h2:
+    console.enabled: true
+#   console.path: /h2-console
+#   console.settings.trace: false
+#   console.settings.web-allow-others: false
+
+  kafka:
+    bootstrap-servers: pkc-nq356.eu-south-2.aws.confluent.cloud:9092
+    properties:
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${CLUSTER_API_KEY}" password="${CLUSTER_API_SECRET}";
+      security.protocol: SASL_SSL
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: card-requests-service
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: hr.rba.card.service.events.CardStatusChangedEvent
+        spring.json.type.mapping: "cardStatusChangedEvent:hr.rba.card.service.events.CardStatusChangedEvent"
+        spring.json.trusted.packages: "hr.rba.card.service.events"
+    listener.ack-mode: MANUAL_IMMEDIATE
+
+validation-service:
+  base-path: http://localhost:8080/api/v1
+  username: ${VALIDATION_SERVICE_USERNAME}
+  password: ${VALIDATION_SERVICE_PASSWORD}
