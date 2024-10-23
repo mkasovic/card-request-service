@@ -8,7 +8,6 @@ import lombok.*;
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
 public class CardRequest {
-
     @Id @GeneratedValue
     private Long id;
 
@@ -23,5 +22,4 @@ public class CardRequest {
 
     @Enumerated(EnumType.STRING) @NotNull(message = "Field 'cardStatus' is mandatory")
     private CardStatus cardStatus = CardStatus.REQUESTED;
-
 }
