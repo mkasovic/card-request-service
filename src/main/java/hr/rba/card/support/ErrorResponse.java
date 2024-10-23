@@ -7,16 +7,6 @@ import java.util.UUID;
 
 @Data
 public class ErrorResponse {
-
-    public ErrorResponse(String description) {
-        this(description,null);
-    }
-
-    public ErrorResponse(String description, String code) {
-        this.code = code;
-        this.description = description;
-    }
-
     // Unique identifier for audit purposes
     private UUID id = UUID.randomUUID();
 
@@ -28,4 +18,13 @@ public class ErrorResponse {
 
     // Time when the error occurred
     private String timestamp = Instant.now().toString();
+
+    public ErrorResponse(String description) {
+        this(description,null);
+    }
+
+    public ErrorResponse(String description, String code) {
+        this.code = code;
+        this.description = description;
+    }
 }
