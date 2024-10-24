@@ -10,7 +10,7 @@ Aplikacija treba osigurati permanentno spremanje podataka, preferirano u bazu po
 ## Sample Process Diagram
 U nastavku se nalazi diagram procesa izdavanja kartica. Arhitektura je napravljena tako da zadovoljava tehničke momente zadatka.
 
-![diagram.png](diagram.png)
+![process.png](process.png)
 
 ### Executing application
 Before executing application several environment variables should be set:
