@@ -12,7 +12,7 @@ U nastavku se nalazi diagram procesa izdavanja kartica. Arhitektura je napravlje
 
 ![process.png](process.png)
 
-### Executing application
+## Executing application
 Before executing application several environment variables should be set:
 ```
 set CLUSTER_API_KEY=...
